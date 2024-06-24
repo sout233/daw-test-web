@@ -16,7 +16,7 @@ function MainExam() {
     const questionListRef = useRef(null);
 
     useEffect(() => {
-        fetch('http://localhost:2224/questions')
+        fetch('/questions.json')
             .then(res => res.json())
             .then(data => setQuestions(data))
             .then(() => console.log(questions))
