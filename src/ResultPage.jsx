@@ -158,7 +158,6 @@ function ResultPage() {
 
             <div className="h-20"></div>
 
-            <Radar {...config} />
         </div>
     );
 }

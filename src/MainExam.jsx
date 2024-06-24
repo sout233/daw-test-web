@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Question from "./Question";
 import { Link, useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { useRef } from "react";
+import QuestionList from "./ConstData";
 
 function MainExam() {
     const [questions, setQuestions] = useState(null);
@@ -16,12 +17,13 @@ function MainExam() {
     const questionListRef = useRef(null);
 
     useEffect(() => {
-        fetch('/questions.json')
-            .then(res => res.json())
-            .then(data => setQuestions(data))
-            .then(() => console.log(questions))
-            .catch(err => console.log(err));
+        // fetch('/questions.json')
+        //     .then(res => res.json())
+        //     .then(data => console.log(data[questions]))
+        //     .then(() => console.log(questions))
+        //     .catch(err => console.log(err));
 
+        setQuestions(QuestionList["questions"])
     }, []);
 
     function submitButtonClick() {
