@@ -107,7 +107,7 @@ packages:
       '@ant-design/charts-util': 0.0.1-alpha.5(react-dom@18.3.1)(react@18.3.1)
       '@antv/event-emitter': 0.1.3
       '@antv/g': 6.0.6
-      '@antv/g2': 5.1.22
+      '@antv/g2': 5.1.23
       '@antv/g2-extension-plot': 0.2.0
       lodash-es: 4.17.21
       react: 18.3.1
@@ -261,14 +261,14 @@ packages:
   /@antv/g2-extension-plot@0.2.0:
     resolution: {integrity: sha512-XeJquOmZw3dHTj2qRNZJZlkX5qDrGJDMhuknHHMgGsj1PoPc8sOWzACesWVHB9tmHJqwheySWmwf4KLxtUBZ9w==}
     dependencies:
-      '@antv/g2': 5.1.22
+      '@antv/g2': 5.1.23
       '@antv/util': 3.3.7
       d3-array: 3.2.4
       d3-hierarchy: 3.1.2
     dev: true
 
-  /@antv/g2@5.1.22:
-    resolution: {integrity: sha512-5h3+frt+fhXgtu/PWFRgHWsxSfSsEpH49YqT2v1b+9KJ561sMCqRzU/Q4yCMuZr76drZuMlZmm+CC+cEIVmmxw==}
+  /@antv/g2@5.1.23:
+    resolution: {integrity: sha512-IdAz63IrK1Qz01xS7LrpvDF68ttJshnRr54OXOh81yKAmdYZhjRpp/Dv/urTbK06i6GeOy9R3ENqlGX/Sv0+rg==}
     dependencies:
       '@antv/component': 2.0.1
       '@antv/coord': 0.4.7

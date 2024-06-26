@@ -3,6 +3,16 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import { Radar } from '@ant-design/charts';
 
+
+const data = [
+    { name: '性能', star: 10371 },
+    { name: '自由度', star: 7380 },
+    { name: '自带资源', star: 7414 },
+    { name: '性价比', star: 2140 },
+    { name: '教学资源', star: 660 },
+    { name: '界面美观', star: 885 },
+];
+
 function ResultPage() {
     const logos =
     {
@@ -19,58 +29,45 @@ function ResultPage() {
 
 
     // Chart init
-    const chartData = [
-        {
-            item: '易上手',
-            score: 70,
-        },
-        {
-            item: '性能优化',
-            score: 60,
-        },
-        {
-            item: '自由度',
-            score: 60,
-        },
-        {
-            item: '界面美观',
-            score: 70,
-        },
-        {
-            item: '教学资源',
-            score: 60,
-        },
-        {
-            item: '自带资源',
-            score: 60,
-        }
-    ];
+
     const config = {
-        title: {
-            visible: true,
-            text: '基础雷达图',
-        },
-        chartData,
-        angleField: 'item',
-        radiusField: 'score',
-        radiusAxis: {
-            grid: {
-                alternateColor: ['rgba(0, 0, 0, 0.04)', null],
+        data: data.map((d) => ({ ...d, star: Math.sqrt(d.star) })),
+        xField: 'name',
+        yField: 'star',
+        area: {
+            style: {
+                fillOpacity: 0.2,
             },
         },
-        area: {
-            visible: false,
+        height:400,
+        width:400,
+        scale: {
+            x: {
+                padding: 0.5,
+                align: 0,
+            },
+            y: {
+                nice: true,
+            },
         },
-        point: {
-            visible: true,
+        axis: {
+            x: {
+                title: false,
+                grid: true,
+            },
+            y: {
+                gridAreaFill: 'rgba(0, 0, 0, 0.04)',
+                label: false,
+                title: false,
+            },
         },
     };
 
     //
 
-    const { data } = useParams();
+    const { data: paramsData } = useParams();
 
-    let enData = window.atob(decodeURI(data));
+    let enData = window.atob(decodeURI(paramsData));
     console.log(enData);
     let json = JSON.parse(enData);
 
@@ -122,7 +119,7 @@ function ResultPage() {
     }, []);
 
     return (
-        <div className="max-w-4xl flex flex-col items-center justify-center m-auto">
+        <div className="max-w-4xl overscroll-x-none flex flex-col items-center justify-center m-auto">
             <div className="flex flex-col justify-center">
                 <div className="m-10">
                     <div className="flex flex-row justify-between">
@@ -130,7 +127,7 @@ function ResultPage() {
                         <h1 className="text-2xl font-bold text-primary italic">测试结果</h1>
                     </div>
                     <div class="divider"></div>
-                    <div className="flex flex-row justify-between overflow-hidden">
+                    <div className="flex flex-row overscroll-x-none justify-between overflow-hidden">
                         <div className="flex flex-col">
                             <h1 className="text-4xl font-bold text-base-content">或许</h1>
                             <h1 className="text-4xl font-bold text-base-content"><span className="text-primary">{aimDaw}</span> 比较适合你？</h1>
@@ -157,7 +154,7 @@ function ResultPage() {
             </div>
 
             <div className="h-20"></div>
-
+            <Radar {...config} ></Radar>
         </div>
     );
 }
