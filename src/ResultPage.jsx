@@ -8,14 +8,7 @@ import domtoimage from 'dom-to-image';
 import { saveAs } from 'file-saver';
 
 
-const data = [
-    { name: '性能', star: 10371 },
-    { name: '自由度', star: 7380 },
-    { name: '自带资源', star: 7414 },
-    { name: '性价比', star: 2140 },
-    { name: '教学资源', star: 660 },
-    { name: '界面美观', star: 885 },
-];
+
 
 function ResultPage() {
     const logos =
@@ -33,40 +26,7 @@ function ResultPage() {
     }
 
 
-    // Chart init
 
-    const config = {
-        data: data.map((d) => ({ ...d, star: Math.sqrt(d.star) })),
-        xField: 'name',
-        yField: 'star',
-        area: {
-            style: {
-                fillOpacity: 0.2,
-            },
-        },
-        height: 400,
-        width: 400,
-        scale: {
-            x: {
-                padding: 0.5,
-                align: 0,
-            },
-            y: {
-                nice: true,
-            },
-        },
-        axis: {
-            x: {
-                title: false,
-                grid: true,
-            },
-            y: {
-                gridAreaFill: 'rgba(0, 0, 0, 0.04)',
-                label: false,
-                title: false,
-            },
-        },
-    };
 
     // 截图神术
     const captureRef = useRef();
@@ -135,8 +95,61 @@ function ResultPage() {
 
     }, []);
 
+    // let data = [
+    //     { name: '性能', star: recommend[aimDaw]['radar'][0] },
+    //     { name: '自由度', star: 7380 },
+    //     { name: '自带资源', star: 7414 },
+    //     { name: '性价比', star: 2140 },
+    //     { name: '教学资源', star: 660 },
+    //     { name: '界面美观', star: 885 },
+    // ];
+
+    let data = [
+        { name: '性能', star: 12200 },
+        { name: '自由度', star: 7380 },
+        { name: '自带资源', star: 7414 },
+        { name: '性价比', star: 2140 },
+        { name: '教学资源', star: 660 },
+        { name: '界面美观', star: 885 },
+    ];
+
+    // Chart init
+
+    const config = {
+        data: data.map((d) => ({ ...d, star: Math.sqrt(d.star) })),
+        xField: 'name',
+        yField: 'star',
+        area: {
+            style: {
+                fillOpacity: 0.2,
+            },
+        },
+        height: 400,
+        width: 400,
+        scale: {
+            x: {
+                padding: 0.5,
+                align: 0,
+            },
+            y: {
+                nice: true,
+            },
+        },
+        axis: {
+            x: {
+                title: false,
+                grid: true,
+            },
+            y: {
+                gridAreaFill: 'rgba(0, 0, 0, 0.04)',
+                label: false,
+                title: false,
+            },
+        },
+    };
+
     return (
-        <div ref={captureRef} className="max-w-4xl w-screen overscroll-x-none relative overflow-hidden flex flex-col items-center justify-center m-auto bg-base-100">
+        <div ref={captureRef} className="max-w-4xl w-auto overscroll-x-none relative overflow-hidden flex flex-col items-center justify-center m-auto bg-base-100">
             <div className="flex flex-col justify-center">
                 <div className="absolute translate-y-[30%]">
                     <div className="bg-primary pointer-events-none absolute start-20 aspect-square w-96 rounded-full opacity-20 blur-3xl"></div>

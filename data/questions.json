@@ -418,16 +418,16 @@
             "question": "我更喜欢免费（或者很便宜）的宿主。",
             "influence": [
                 {
-                    "Reaper": 30
+                    "Reaper": 20
                 },
                 {
-                    "Cakewalk": 44
+                    "Cakewalk": 25
                 },
                 {
                     "Bitwig": -55
                 },
                 {
-                    "LMMS": 60
+                    "LMMS": 30
                 },
                 {
                     "Logic Pro": -30
@@ -442,7 +442,7 @@
                     "Studio One": -20
                 },
                 {
-                    "Pro Tools": 10
+                    "Pro Tools": 0
                 },
                 {
                     "Cubase": -55
