@@ -7,8 +7,8 @@ function Splash() {
                 <div className="max-w-md">
                     <h1 className="text-4xl font-bold">测测哪款DAW</h1>
                     <h1 className="text-5xl font-bold">更适合你</h1>
-                    <p className="py-6">仅供娱乐 仍在开发中</p>
-                    <p className="py-6">dev. by sout_Nantang</p>
+                    <p className="py-2">仅供娱乐 仍在开发中</p>
+                    <p className="py-2">dev. by sout_Nantang</p>
                     <Link className="btn btn-primary" to="/ex">开始测试</Link>
                 </div>
             </div>
