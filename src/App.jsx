@@ -7,6 +7,7 @@ import './Splash'
 import Splash from './Splash'
 import MainExam from './MainExam'
 import ResultPage from './ResultPage'
+import Scroll2Top from './Scroll2Top'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -14,6 +15,7 @@ function App() {
   return (
     <>
       <Router>
+        <Scroll2Top/>
         <Switch>
           <Route exact path="/">
             <Splash></Splash>

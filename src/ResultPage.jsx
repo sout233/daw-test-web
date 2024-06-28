@@ -2,6 +2,10 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import { Radar } from '@ant-design/charts';
+import { useRef } from "react";
+import html2canvas from 'html2canvas';
+import domtoimage from 'dom-to-image';
+import { saveAs } from 'file-saver';
 
 
 const data = [
@@ -64,7 +68,18 @@ function ResultPage() {
         },
     };
 
-    //
+    // 截图神术
+    const captureRef = useRef();
+
+    const handleCaptureClick = () => {
+        domtoimage.toBlob(captureRef.current)
+            .then(blob => {
+                saveAs(blob, 'screenshot.png');
+            });
+    };
+
+
+    // 该死的map
 
     const { data: paramsData } = useParams();
 
@@ -107,6 +122,7 @@ function ResultPage() {
 
 
     // 到此为止了
+
     let [recommend, setRecommend] = useState(null);
 
     // 启动吧，fetch之力！！！
@@ -120,12 +136,12 @@ function ResultPage() {
     }, []);
 
     return (
-        <div className="max-w-4xl w-screen overscroll-x-none flex flex-col items-center justify-center m-auto">
+        <div ref={captureRef} className="max-w-4xl w-screen overscroll-x-none relative overflow-hidden flex flex-col items-center justify-center m-auto bg-base-100">
             <div className="flex flex-col justify-center">
-                <div className="overflow-hidden w-screen h-screen absolute translate-y-[30%]">
-                    <div className="bg-primary pointer-events-none absolute start-20 aspect-square w-96 rounded-full opacity-20 blur-3xl [transform:translate3d(0,0,0)]"></div>
-                    <div className="bg-success pointer-events-none absolute aspect-square w-full rounded-full opacity-10 blur-3xl [transform:translate3d(0,0,0)]"></div>
-                    <img src={logos[aimDaw]} alt="logo" className="w-60 absolute rotate-6 rounded-2xl translate-x-[120%] translate-y-[50%] opacity-50" />
+                <div className="absolute translate-y-[30%]">
+                    <div className="bg-primary pointer-events-none absolute start-20 aspect-square w-96 rounded-full opacity-20 blur-3xl"></div>
+                    <div className="bg-success pointer-events-none absolute aspect-square w-full rounded-full opacity-10 blur-3xl"></div>
+                    <img src={logos[aimDaw]} alt="logo" className="w-60 rotate-6 rounded-2xl translate-x-[120%] translate-y-[10%] opacity-50" />
                 </div>
                 <div className="m-10">
                     <div className="flex flex-row justify-between">
@@ -143,7 +159,7 @@ function ResultPage() {
                     </div>
                 </div>
             </div>
-            <div className="flex flex-col justify-center items-center bg-white rounded-xl p-4 m-4">
+            <div className="flex flex-col justify-center items-center bg-base-100 rounded-xl p-4 m-4">
                 {listItems}
             </div>
 
@@ -165,7 +181,7 @@ function ResultPage() {
             <div className="h-20"></div>
 
             <div className="flex flex-col justify-center items-center">
-                <button className="btn btn-primary w-60">生成报告</button>
+                <button className="btn btn-primary w-60" onClick={handleCaptureClick}>生成报告</button>
             </div>
 
             <div className="h-20"></div>
