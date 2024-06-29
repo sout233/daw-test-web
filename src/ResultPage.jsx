@@ -8,8 +8,6 @@ import domtoimage from 'dom-to-image';
 import { saveAs } from 'file-saver';
 
 
-
-
 function ResultPage() {
     const logos =
     {
@@ -24,8 +22,6 @@ function ResultPage() {
         'LMMS': '/LMMS.svg',
         'Bitwig': 'https://assets.bitwig.net/static/web/img/BW_Logo_Header.svg?v=001'
     }
-
-
 
 
     // 截图神术
@@ -84,38 +80,37 @@ function ResultPage() {
     // 到此为止了
 
     let [recommend, setRecommend] = useState(null);
+    let [data, setData] = useState([])
 
     // 启动吧，fetch之力！！！
     useEffect(() => {
         fetch('/recommend.json')
             .then(res => res.json())
-            .then(data => setRecommend(data))
-            .then(() => console.log(recommend))
+            .then(data => {
+                setRecommend(data);
+                return data;
+            })
+            .then(data => {
+                invokeSetData(data);
+            })
             .catch(err => console.log(err));
 
+        function invokeSetData(data) {
+            let pre_data = [
+                { name: '性能', star: data[aimDaw]['radar'][0] },
+                { name: '自由度', star: data[aimDaw]['radar'][1] },
+                { name: '自带资源', star: data[aimDaw]['radar'][2] },
+                { name: '性价比', star: data[aimDaw]['radar'][3] },
+                { name: '教学资源', star: data[aimDaw]['radar'][4] },
+                { name: '界面美观', star: data[aimDaw]['radar'][5] },
+            ];
+            setData(pre_data);
+        }
     }, []);
-
-    // let data = [
-    //     { name: '性能', star: recommend[aimDaw]['radar'][0] },
-    //     { name: '自由度', star: 7380 },
-    //     { name: '自带资源', star: 7414 },
-    //     { name: '性价比', star: 2140 },
-    //     { name: '教学资源', star: 660 },
-    //     { name: '界面美观', star: 885 },
-    // ];
-
-    let data = [
-        { name: '性能', star: 12200 },
-        { name: '自由度', star: 7380 },
-        { name: '自带资源', star: 7414 },
-        { name: '性价比', star: 2140 },
-        { name: '教学资源', star: 660 },
-        { name: '界面美观', star: 885 },
-    ];
 
     // Chart init
 
-    const config = {
+    let config = {
         data: data.map((d) => ({ ...d, star: Math.sqrt(d.star) })),
         xField: 'name',
         yField: 'star',
@@ -188,7 +183,7 @@ function ResultPage() {
 
             <div className="items-center justify-center text-center">
                 <h1 className="text-4xl font-bold text-base-content mb-10">?看看参数?</h1>
-                <Radar {...config} ></Radar>
+                {recommend && <Radar {...config} ></Radar>}
             </div>
 
             <div className="h-20"></div>
