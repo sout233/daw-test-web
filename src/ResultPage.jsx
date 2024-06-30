@@ -3,9 +3,9 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import { Radar } from '@ant-design/charts';
 import { useRef } from "react";
-import html2canvas from 'html2canvas';
 import domtoimage from 'dom-to-image';
 import { saveAs } from 'file-saver';
+import ResultLink from "./ResultLink";
 
 
 function ResultPage() {
@@ -26,11 +26,30 @@ function ResultPage() {
 
     // 截图神术
     const captureRef = useRef();
+    const buttonRef = useRef();
 
     const handleCaptureClick = () => {
+        // 获取不想包含的元素
+        const elementsToHide = document.querySelectorAll('.class2hide');
+
+        function hideElements() {
+            elementsToHide.forEach(el => el.style.display = 'none');
+        }
+
+        function showElements() {
+            elementsToHide.forEach(el => el.style.display = '');
+        }
+
+        hideElements(); // 隐藏元素
+
         domtoimage.toBlob(captureRef.current)
             .then(blob => {
                 saveAs(blob, 'screenshot.png');
+                showElements(); // 截屏完成后显示元素
+            })
+            .catch(error => {
+                console.error('oops, something went wrong!', error);
+                showElements(); // 如果出错也显示元素
             });
     };
 
@@ -167,6 +186,7 @@ function ResultPage() {
                     </div>
                 </div>
             </div>
+
             <div className="flex flex-col justify-center items-center bg-base-100 rounded-xl p-4 m-4">
                 {listItems}
             </div>
@@ -175,7 +195,7 @@ function ResultPage() {
 
             <div className="flex flex-col justify-between items-center">
                 <h1 className="text-4xl font-bold text-base-content">{aimDaw}</h1>
-                <h1 className="text-6xl font-bold text-primary italic absolute left-[50%] translate-x-[-50%] translate-y-[-50%] opacity-20 text-nowrap">{recommend && recommend[aimDaw]['tag']}</h1>
+                <h1 className="text-6xl font-bold text-primary italic truncate absolute left-[50%] translate-x-[-50%] translate-y-[-50%] opacity-20 text-nowrap">{recommend && recommend[aimDaw]['tag']}</h1>
                 <p className="pt-5 text-lg p-10 font-bold text-base-content text-pretty break-before-auto whitespace-pre-line text-center">{recommend && recommend[aimDaw]['desc']}</p>
             </div>
 
@@ -186,14 +206,16 @@ function ResultPage() {
                 {recommend && <Radar {...config} ></Radar>}
             </div>
 
-            <div className="h-20"></div>
+            <div className="h-20 class2hide"></div>
 
-            <div className="flex flex-col justify-center items-center">
+            <div ref={buttonRef} className="class2hide flex flex-col justify-center items-center">
                 <button className="btn btn-primary w-60" onClick={handleCaptureClick}>生成报告</button>
+                <p className="text-sm text-base-content opacity-50 p-2">可能会有问题，还是截屏吧（</p>
             </div>
 
             <div className="h-20"></div>
 
+            <ResultLink></ResultLink>
         </div>
     );
 }

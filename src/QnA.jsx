@@ -13,7 +13,7 @@ function QnA() {
                     </li>
                     <li>
                         <h1 className="text-2xl font-bold mb-4">我可以添加题目吗？</h1>
-                        <p className="text-lg mb-8">可以，你可以向<a className="underline text-primary" href="https://github.com/sout233/daw-test-web">该项目的储存库</a>提交PR来修改题目。</p>
+                        <p className="text-lg mb-8">可以，你可以向<a className="underline text-primary " href="https://github.com/sout233/daw-test-web">该项目的储存库</a>提交PR来修改题目。</p>
                     </li>
                     <li>
                         <h1 className="text-2xl font-bold mb-4">你和王一鸣什么关系？</h1>

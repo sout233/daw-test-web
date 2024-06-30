@@ -34,6 +34,9 @@ devDependencies:
   dom-to-image:
     specifier: ^2.6.0
     version: 2.6.0
+  dom-to-image-more:
+    specifier: ^3.3.0
+    version: 3.3.0
   eslint:
     specifier: ^8.57.0
     version: 8.57.0
@@ -1753,6 +1756,10 @@ packages:
     engines: {node: '>=6.0.0'}
     dependencies:
       esutils: 2.0.3
+    dev: true
+
+  /dom-to-image-more@3.3.0:
+    resolution: {integrity: sha512-4k0oxVfQ4Nrv4/Iva6FpsXTAtPCp5JnZNO/n/hsuOpe3ANlMiK50URZDQKzJslthQD8k76z9vHS3usIzmJoFVw==}
     dev: true
 
   /dom-to-image@2.6.0:

@@ -5,9 +5,9 @@ function Splash() {
     return (<>
         <div className="hero min-h-screen">
             <div className="hero-content text-center">
-                <div className="max-w-md">
-                    <h1 className="text-4xl font-bold">测测哪款DAW</h1>
-                    <h1 className="text-5xl font-bold">更适合你</h1>
+                <div className="max-w-md flex flex-col items-center justify-center">
+                    <h1 className="text-4xl font-bold hover:animate-spin">测测哪款DAW</h1>
+                    <h1 className="text-5xl font-bold hover:animate-ping">更适合你</h1>
                     <div className="py-4">
                         <p>仅供娱乐 WIP</p>
                         <p>dev. by sout_Nantang</p>
@@ -21,11 +21,14 @@ function Splash() {
                         </div>
                     </div>
                     <Link className="btn btn-primary w-40" to="/ex">开始测试</Link>
+                    <div className="flex flex-col justify-center items-center translate-y-40">
+                        <p className="text-sm text-base-content opacity-50 p-2 animate-bounce">万一下面还有东西呢</p>
+                        <svg class="w-10 h-10 animate-bounce" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4235" width="200" height="200"><path d="M830.24 340.688l11.328 11.312a16 16 0 0 1 0 22.624L530.448 685.76a16 16 0 0 1-22.64 0L196.688 374.624a16 16 0 0 1 0-22.624l11.312-11.312a16 16 0 0 1 22.624 0l288.496 288.496 288.512-288.496a16 16 0 0 1 22.624 0z" fill="#000000" p-id="4236"></path></svg>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="divider">Q&A</div>
-
         <QnA></QnA>
     </>);
 }
