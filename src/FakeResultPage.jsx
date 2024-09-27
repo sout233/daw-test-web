@@ -49,7 +49,7 @@ function FakeResultPage() {
                 <div className="absolute translate-y-[30%]">
                     <div className="bg-primary pointer-events-none absolute start-20 aspect-square w-96 rounded-full opacity-20 blur-3xl"></div>
                     <div className="bg-success pointer-events-none absolute aspect-square w-full rounded-full opacity-10 blur-3xl"></div>
-                    <img src="https://th.bing.com/th/id/OIP.NyTalzQFjkhwrtL5YBC-HwAAAA?dpr=2.8&pid=ImgDetMain" alt="logo" className="w-60 animate-ping rotate-6 rounded-2xl translate-x-[30%] translate-y-[50%] opacity-50" />
+                    <img src="https://img.moegirl.org.cn/common/a/a3/栗子头.png" alt="logo" className="w-60 animate-ping rotate-6 rounded-2xl translate-x-[30%] translate-y-[50%] opacity-50" />
                 </div>
                 <div className="m-10">
                     <div className="flex flex-row justify-between">
