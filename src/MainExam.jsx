@@ -52,7 +52,7 @@ function MainExam() {
     let values = Object.values(result);
 
     if (allZeros(values)) {
-      history.push("/result/" + window.btoa("damn"));
+      history.push("/damn/null");
     } else {
       history.push("/result/" + encodeURI(window.btoa(JSON.stringify(result))));
     }

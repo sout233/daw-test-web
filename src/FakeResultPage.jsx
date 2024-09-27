@@ -8,7 +8,7 @@ import { saveAs } from 'file-saver';
 import ResultLink from "./ResultLink";
 
 
-function ResultPage() {
+function FakeResultPage() {
     const logos =
     {
         'FL Studio': '/FL Studio.png',
@@ -220,4 +220,4 @@ function ResultPage() {
     );
 }
 
-export default ResultPage;
+export default FakeResultPage;
