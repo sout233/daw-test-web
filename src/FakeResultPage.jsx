@@ -61,7 +61,7 @@ function FakeResultPage() {
                         <div className="flex flex-col">
                             <h1 className="md:text-4xl text-3xl font-bold text-base-content">或许</h1>
                             <h1 className="md:text-4xl text-3xl font-bold text-base-content">你不适合编曲</h1>
-                            <h1 className="text-xl font-bold text-base-content">建议把所有设备买了</h1>
+                            <h1 className="text-xl font-bold text-base-content">建议把所有设备卖了</h1>
                             <h1 className="text-xl font-bold text-base-content">请我吃一顿疯狂星期四</h1>
                         </div>
                     </div>
