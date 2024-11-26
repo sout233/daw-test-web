@@ -50,6 +50,7 @@ function MainExam() {
     console.log(result);
 
     let values = Object.values(result);
+
     if (allZeros(values)) {
       history.push("/damn/null");
     } else {
@@ -58,12 +59,6 @@ function MainExam() {
 
     result = {};
   }
-  let values = Object.values(result);
-
-  let [canSubmit, setCanSubmit] = useState(false);
-
-  setCanSubmit(allZeros(values));
-
 
   function allZeros(array) {
     return array.every(function (value) {
@@ -96,7 +91,6 @@ function MainExam() {
           <button
             className="btn w-full px-10 btn-primary"
             onClick={submitButtonClick}
-            disabled={canSubmit}
           >
             OK! 我好了
           </button>
